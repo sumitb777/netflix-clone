@@ -1,0 +1,255 @@
+import React, { useState } from 'react'
+import axios from 'axios';
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import Carousel from 'react-bootstrap/Carousel';
+
+
+const Movierow = (topic) => {
+    let Navigate = useNavigate();
+    const [tranding, settranding] = useState([]);
+    const [movieinfo, setmovieinfo] = useState([]);
+    const [moviepopular, setmoviepopular] = useState([]);
+    const [mtoprated, setmtoprated] = useState([]);
+    const [tvtoprated, settvtoprated] = useState([]);
+    const [tvpopular, settvpopular] = useState([]);
+
+    const [detail, deatail] = useState([]);
+
+    const gettranding = async () => {
+
+        await axios.get('https://api.themoviedb.org/3/trending/all/day?api_key=c0d670d047a1f673651ed4c9bd561204').
+            then(
+
+                (res) => {
+                    const result = res.data.results
+                    settranding(result)
+
+                })
+    }
+
+    const getmovie = async () => {
+
+        await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=c0d670d047a1f673651ed4c9bd561204').
+            then(
+
+                (res) => {
+                    const result = res.data.results
+                    setmovieinfo(result)
+
+                })
+    }
+    const getPopular = async () => {
+
+        await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=c0d670d047a1f673651ed4c9bd561204').
+            then(
+
+                (res) => {
+                    const result = res.data.results
+                    setmoviepopular(result)
+
+                })
+    }
+
+    const getTopRated = async () => {
+
+        await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=c0d670d047a1f673651ed4c9bd561204').
+            then(
+
+                (res) => {
+                    const result = res.data.results
+                    setmtoprated(result)
+
+                })
+    }
+    const gettvpop = async () => {
+
+        await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=c0d670d047a1f673651ed4c9bd561204').
+            then(
+
+                (res) => {
+                    const result = res.data.results
+                    settvpopular(result)
+
+                })
+    }
+    const gettvTopRated = async () => {
+
+        await axios.get('https://api.themoviedb.org/3/tv/top_rated?api_key=c0d670d047a1f673651ed4c9bd561204').
+            then(
+
+                (res) => {
+                    const result = res.data.results
+                    settvtoprated(result)
+
+                })
+    }
+
+
+
+    console.log(setmovieinfo)
+
+    useEffect(() => {
+        gettranding()
+        getmovie()
+        getPopular()
+        getTopRated()
+        gettvpop()
+        gettvTopRated()
+        console.log(movieinfo.length)
+        // console.log(detail)
+    }, [])
+
+    return (
+
+        <section className=' container-fluid'>
+            <div className=" mt-5  bg-black ">
+
+
+                <Carousel className='Carouselp'>
+                    {tranding.map((value, index) => {
+
+                        return (
+
+                            <Carousel.Item onClick={() => { Navigate(`/deatils/${value.id}`) }} >
+
+                                <img className='btn ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                <Carousel.Caption>
+
+                                    <p>{value.name}</p>
+
+                                    <p className='h6'>{value.title}</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        )
+                    })}
+
+                </Carousel>
+
+            </div>
+
+            <div className=''>
+                <div className='text-white text-start'>
+                    <h3>Most Top Rated Movies</h3>
+                </div>
+                <div className="scrolling-wrapper position-relative d-flex  ">
+
+                    {movieinfo.map((value, index) => {
+                        // console.log(movieinfo.length)
+                        // console.log(value)
+                        // console.log(typeof (movieinfo))
+                        // console.log((index))
+                        // let mimg = value[index].known_for[index].poster_path;
+                        return (
+
+                            <div className='card w-25 bg-transparent  text-white text-start' key={value.id}
+                                onClick={() => { Navigate(`/deatils/${value.id}`) }}
+                            >
+                                {/* <p className='h6 flex-wrap'>{value.title}</p> */}
+                                <img className=' ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                <p>{value.name}</p>
+
+                            </div>
+
+                        )
+                    })}
+                </div>
+            </div>
+            <div className=" bg-black mt-4">
+                <div className='text-white text-start'>
+                    <h3>Most Top Rated Movies</h3>
+                </div>
+                <div className="scrolling-wrapper position-relative d-flex gap-2  ">
+
+                    {mtoprated.map((value, index) => {
+                        // console.log(movieinfo.length)
+                        // console.log(value)
+                        // console.log(typeof (movieinfo))
+                        // console.log((index))
+                        console.log(value.id)
+
+                        // let mimg = value[index].known_for[index].poster_path;
+                        return (
+
+
+                            <div className='card w-25 bg-transparent text-white text-start ' key={value.id}
+                                onClick={() => { Navigate(`/deatils/${value.id}`) }}>
+                                {/* <p className='h6 text-white'>{value.title}</p> */}
+                                <img className=' ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                <p>{value.name}</p>
+
+                            </div>
+
+                        )
+                    })}
+                </div>
+            </div>
+            <div className=" mt-4 ">
+                <div className='text-white text-start'>
+                    <h3>Most Top Rated Movies</h3>
+                </div>
+
+                <div className="scrolling-wrapper position-relative d-flex  ">
+
+                    {moviepopular.map((value, index) => {
+
+                        return (
+                            <div className='card w-25 bg-transparent text-white text-start ' key={value.id}
+                                onClick={() => { Navigate(`/deatils/${value.id}`) }}>
+                                <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+
+            {/*                                   tv                          */}
+            <div className=" mt-4 ">
+                <div className='text-white text-start'>
+                    <h3>Most Popular TV Shows</h3>
+                </div>
+
+                <div className="scrolling-wrapper position-relative d-flex  ">
+
+                    {tvpopular.map((value, index) => {
+
+                        return (
+                            <div className='card w-25 bg-transparent text-white text-start  '
+                                onClick={() => { Navigate(`/tvdetails/${value.id}`) }} key={value.id}>
+                                <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+            <div className=" mt-4 ">
+                <div className='text-white text-start'>
+                    <h3>Most Top Rated TV Shows</h3>
+                </div>
+
+                <div className="scrolling-wrapper position-relative d-flex  ">
+
+                    {tvtoprated.map((value, index) => {
+
+                        return (
+                            <div className='card w-25 bg-transparent text-white text-start  ' key={value.id}
+                                onClick={() => { Navigate(`/tvdetails/${value.id}`) }}>
+                                <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                            </div>
+                        )
+                    })}
+                </div>
+
+            </div>
+            <div className='py-5 bg-transparent text-white'>
+                <p className='mt-4'>NetFlix Clone</p>
+                <p>@ Sumit</p>
+            </div>
+
+
+
+        </section>
+    )
+}
+
+export default Movierow;
