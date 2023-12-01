@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import axios from 'axios';
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -13,8 +13,13 @@ const Movierow = (topic) => {
     const [mtoprated, setmtoprated] = useState([]);
     const [tvtoprated, settvtoprated] = useState([]);
     const [tvpopular, settvpopular] = useState([]);
-
+    const screenWidth = window.innerWidth;
     const [detail, deatail] = useState([]);
+    const elementref = useRef();
+    const elementref2 = useRef();
+    const elementref3 = useRef();
+    const elementref4 = useRef();
+    const elementref5 = useRef();
 
     const gettranding = async () => {
 
@@ -87,7 +92,17 @@ const Movierow = (topic) => {
 
 
 
-    console.log(setmovieinfo)
+    console.log(movieinfo)
+
+
+    const rightslide = (ele) => {
+        ele.scrollLeft += screenWidth + 60
+
+    }
+    const leftslide = (ele) => {
+        ele.scrollLeft -= screenWidth - 60
+
+    }
 
     useEffect(() => {
         gettranding()
@@ -128,11 +143,16 @@ const Movierow = (topic) => {
 
             </div>
 
-            <div className=''>
+            <div className=' position-relative '>
                 <div className='text-white text-start'>
-                    <h3>Most Top Rated Movies</h3>
+                    <h3> Movies now playing</h3>
                 </div>
-                <div className="scrolling-wrapper position-relative d-flex  ">
+                <div className='arrowl position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
+                    <p className=' btn h-100 d-flex  align-items-center  justify-content-between  '
+                        onClick={() => leftslide(elementref.current)}
+                    ><i class="fa-solid fa-chevron-left fa-2xl left  " style={{ color: '#c7cdd6', }} ></i></p>
+                </div>
+                <div className="scrolling-wrapper overflow-x-scroll    m-auto   d-flex  " ref={elementref}>
 
                     {movieinfo.map((value, index) => {
                         // console.log(movieinfo.length)
@@ -154,13 +174,21 @@ const Movierow = (topic) => {
                         )
                     })}
                 </div>
+                <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between    z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                        onClick={() => rightslide(elementref.current)}><i class="fa-solid fa-chevron-right fa-2xl " style={{ color: '#c7cdd6', }}></i></p>
+                </div>
             </div>
-            <div className=" bg-black mt-4">
+            <div className=" bg-black mt-4 position-relative ">
                 <div className='text-white text-start'>
                     <h3>Most Top Rated Movies</h3>
                 </div>
-                <div className="scrolling-wrapper position-relative d-flex gap-2  ">
+                <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between  ' onClick={() => leftslide(elementref2.current)}
+                    ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                </div>
 
+                <div className="scrolling-wrapper overflow-x-scroll  position-relative d-flex gap-2  " ref={elementref2}>
                     {mtoprated.map((value, index) => {
                         // console.log(movieinfo.length)
                         // console.log(value)
@@ -183,13 +211,21 @@ const Movierow = (topic) => {
                         )
                     })}
                 </div>
+                <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                        onClick={() => rightslide(elementref2.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
+                </div>
             </div>
-            <div className=" mt-4 ">
+            <div className=" mt-4 position-relative ">
                 <div className='text-white text-start'>
-                    <h3>Most Top Rated Movies</h3>
+                    <h3>Most popular  Movies</h3>
+                </div>
+                <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref3.current)}
+                    ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
                 </div>
 
-                <div className="scrolling-wrapper position-relative d-flex  ">
+                <div className="scrolling-wrapper overflow-x-scroll  d-flex " ref={elementref3} >
 
                     {moviepopular.map((value, index) => {
 
@@ -201,15 +237,23 @@ const Movierow = (topic) => {
                         )
                     })}
                 </div>
+                <div className='arrowr position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                        onClick={() => rightslide(elementref3.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
+                </div>
             </div>
 
             {/*                                   tv                          */}
-            <div className=" mt-4 ">
+            <div className=" mt-4 position-relative">
                 <div className='text-white text-start'>
                     <h3>Most Popular TV Shows</h3>
                 </div>
+                <div className='arrowl position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref4.current)}
+                    ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                </div>
 
-                <div className="scrolling-wrapper position-relative d-flex  ">
+                <div className="scrolling-wrapper overflow-x-scroll position-relative d-flex  " ref={elementref4}>
 
                     {tvpopular.map((value, index) => {
 
@@ -221,13 +265,21 @@ const Movierow = (topic) => {
                         )
                     })}
                 </div>
+                <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                        onClick={() => rightslide(elementref4.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
+                </div>
             </div>
-            <div className=" mt-4 ">
+            <div className=" mt-4 position-relative  ">
                 <div className='text-white text-start'>
                     <h3>Most Top Rated TV Shows</h3>
                 </div>
+                <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref5.current)}
+                    ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                </div>
 
-                <div className="scrolling-wrapper position-relative d-flex  ">
+                <div className="scrolling-wrapper overflow-x-scroll position-relative d-flex  " ref={elementref5}>
 
                     {tvtoprated.map((value, index) => {
 
@@ -238,6 +290,10 @@ const Movierow = (topic) => {
                             </div>
                         )
                     })}
+                </div>
+                <div className='arrowr position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
+                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                        onClick={() => rightslide(elementref5.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
                 </div>
 
             </div>

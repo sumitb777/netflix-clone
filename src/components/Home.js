@@ -14,7 +14,7 @@ const Home = () => {
                 <header class="header-section ">
                     <section class=" col-lg-9 m-auto  py-3 d-flex justify-content-lg-between justify-content-around   ">
 
-                        <img class="img-l  " src="./images/logo.png" alt="" />
+                        <img class="logo-home  " src="./images/logo.png" alt="" />
                         <div class="d-flex gap-4   ">
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle bg-transparent " type="button" data-bs-toggle="dropdown"

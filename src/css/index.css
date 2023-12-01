@@ -4,11 +4,25 @@
 }
 
 .headerh {
-    height: 40px !important;
+    height: 60px !important;
 }
 
 .img-l {
+    /* max-height: 35px !important; */
+    height: 70%;
+}
+
+.logo-home {
     max-height: 30px !important;
+}
+
+.header-input {
+    background-color: rgba(70, 65, 65, 0.153) !important;
+    outline: none;
+}
+
+.header-input::placeholder {
+    color: white;
 }
 
 .img-2 {
@@ -104,6 +118,8 @@ hr {
     overflow-x: auto;
     white-space: nowrap;
     max-height: 40vh;
+    scroll-behavior: smooth;
+
 }
 
 .card {
@@ -122,14 +138,16 @@ hr {
 }
 
 .moviedeailsimg {
-    max-height: 70vh !important;
+    max-height: 90vh !important;
     width: 100%;
+
 }
 
 .scrolling-wrapper::-webkit-scrollbar {
-    width: 5px;
+    display: none;
 }
 
+/*
 .scrolling-wrapper::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(136, 127, 127, 0.61);
     border-radius: 10px;
@@ -147,6 +165,47 @@ hr {
 .scrolling-wrapper::-webkit-scrollbar-button {
 
     background-color: #ffffff21;
-}
+} */
 
 .ulheader {}
+
+
+
+.arrowl {
+    /* left: 10px; */
+    /* top: 48%; */
+    height: 87%;
+
+}
+
+
+.arrowr {
+    /* right: 0px; */
+    right: 0;
+    top: 13%;
+    height: 87%;
+
+}
+
+.arrowl:hover {
+    cursor: pointer;
+    background-color: #0a0a0ab7;
+    transform: scale(1, 1);
+}
+
+.arrowr:hover {
+    cursor: pointer;
+    background-color: #0a0a0abd;
+    transform: scale(1, 1);
+}
+
+.imgdetails {
+    top: 0;
+
+    height: 100%;
+    padding-top: 12%;
+    padding-left: 4%;
+    /* background-color: #0a0a0aad; */
+    background-image: linear-gradient(to right, #0a0a0afb, #0a0a0acb, #0a0a0ab2, #27262604);
+
+}
