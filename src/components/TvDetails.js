@@ -40,11 +40,11 @@ const TvDetails = () => {
                 </div>
                 <div className=' position-absolute  imgdetails col-5     '>
                     <div className=' text-start '>
-                        <p className='h3'>{info.title} </p>
+                        <p className='h2'>{info.name} </p>
 
-                        <p className=''>Runtime :{info.runtime}m </p>
+                        <p className='t'>seasons :{` ${info.number_of_seasons}`}</p>
 
-                        <p>Genres :{genere.map((v) => {
+                        <p className='text-plot'>Genres :{genere.map((v) => {
                             return <span>{` ${v.name} `}</span>
                         })}</p>
 
@@ -54,8 +54,8 @@ const TvDetails = () => {
 
                     </div>
                     <div className=' d-none  d-md-block col-md-7 mb-4' >
-                        <p className='text-start h6 '>Plot </p>
-                        <p className='text-start mb-4'> {info.overview}</p>
+                        <p className='text-start h6  '>Plot </p>
+                        <p className='text-start mb-4 text-plot'> {info.overview}</p>
                     </div>
 
                 </div>

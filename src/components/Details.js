@@ -50,7 +50,7 @@ const Details = () => {
                     <div className=' text-start '>
                         <p className='h3'>{info.title} </p>
 
-                        <p className=''>Runtime :{info.runtime}m </p>
+                        <p className='text-plot'>Runtime :{info.runtime}m </p>
 
                         <p>Genres :{genere.map((v) => {
                             return <span>{` ${v.name} `}</span>
@@ -62,8 +62,8 @@ const Details = () => {
 
                     </div>
                     <div className=' d-none  d-md-block  mb-4' >
-                        <p>Plot</p>
-                        <p className='text-start mb-4'>{info.overview}</p>
+
+                        <p className='text-start mb-4 text-plot'>{info.overview}</p>
                     </div>
 
                 </div>
@@ -86,7 +86,7 @@ const Details = () => {
             </div>
             <div className='   d-md-none  mb-4' >
                 <p>Plot</p>
-                <p className='text-start mb-4'>{info.overview}</p>
+                <p className='text-start mb-4 '>{info.overview}</p>
             </div>
             <div className='py-5 mt-3 bg-transparent text-white'>
                 <p className='mt-4'>NetFlix Clone</p>

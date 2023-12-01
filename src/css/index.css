@@ -206,6 +206,10 @@ hr {
     padding-top: 12%;
     padding-left: 4%;
     /* background-color: #0a0a0aad; */
-    background-image: linear-gradient(to right, #0a0a0afb, #0a0a0acb, #0a0a0ab2, #27262604);
+    background-image: linear-gradient(to right, #0a0a0afb, #0a0a0acb, #0a0a0ab2, #0a0a0ab2, #27262604);
 
+}
+
+.text-plot {
+    color: rgb(212, 207, 207);
 }
