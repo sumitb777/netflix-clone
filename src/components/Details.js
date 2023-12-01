@@ -73,7 +73,7 @@ const Details = () => {
             <div className='d-flex col-10 col-md-7  gap-5 justify-content-between'>
                 <div className='col-3 mt-3   '
                 >
-                    <a href={info.homepage}>
+                    <a href={info.homepage} rel="noreferrer" target='_blank'>
 
                         <p className='btn btn-danger btn-outline-light btn-lg   text-start justify-content-start'>PlayMovie</p>
                     </a>
