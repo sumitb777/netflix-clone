@@ -23,7 +23,7 @@ const Movierow = (topic) => {
 
     const gettranding = async () => {
 
-        await axios.get('https://api.themoviedb.org/3/trending/all/day?api_key=c0d670d047a1f673651ed4c9bd561204').
+        await axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=c0d670d047a1f673651ed4c9bd561204').
             then(
 
                 (res) => {
