@@ -40,7 +40,7 @@ const TvDetails = () => {
                 </div>
                 <div className=' position-absolute  imgdetails col-5     '>
                     <div className=' text-start '>
-                        <p className='h2'>{info.name} </p>
+                        <p className='h1'>{info.name} </p>
 
                         <p className='t'>seasons :{` ${info.number_of_seasons}`}</p>
 

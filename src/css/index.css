@@ -18,11 +18,17 @@
 
 .header-input {
     background-color: rgba(70, 65, 65, 0.153) !important;
-    outline: none;
+    outline: #4b4949 !important;
+
+    border-color: #4b4949;
 }
 
 .header-input::placeholder {
     color: white;
+}
+
+.header-input:focus {
+    border-color: #4b4949;
 }
 
 .img-2 {

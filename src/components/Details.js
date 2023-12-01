@@ -48,7 +48,7 @@ const Details = () => {
                 </div>
                 <div className=' position-absolute  imgdetails col-5     '>
                     <div className=' text-start '>
-                        <p className='h3'>{info.title} </p>
+                        <p className='h1'>{info.title} </p>
 
                         <p className='text-plot'>Runtime :{info.runtime}m </p>
 

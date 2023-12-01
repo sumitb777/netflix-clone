@@ -33,11 +33,12 @@ const Header = () => {
 
             <img class="img-l col-2 col-md-1  p-0 img-fluid  " onClick={() => { navigate('/') }} src="/images/logo.png" alt="" />
 
-            <div class="d-flex position-relative col-8 col-md-5 " role="search">
-                <input class="  form-control  header-input border border-light-subtle text-white  " type="search" placeholder="Search" aria-label="Search" value={id}
+            <div class="d-flex position-relative col-8 col-md-5 gap-1  " role="search">
+                <input class="  form-control  header-input  text-light    "
+                    type="search" placeholder="Search Movies" aria-label="Search" value={id}
                     onChange={getname}
                 />
-                <button class="btn btn-danger px-2" type="submit" onClick={moviedeails}>Search</button>
+                <button class="btn btn-dark   text-white px-2" type="submit" onClick={moviedeails}>Search</button>
                 <ul className='ulheader list-group position-absolute top-100  w-100  text-dark z-3 bg-white text-decoration-none'>
                     {searchinfo.map((value, index) => {
 
