@@ -122,7 +122,7 @@ const Movierow = () => {
     }, [])
 
     return (
-        <>{tranding && tvtoprated !== null ? (
+        <>{tranding && tvtoprated && moviepopular && movieinfo && tvpopular !== null ? (
 
 
 
