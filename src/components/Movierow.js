@@ -3,9 +3,11 @@ import axios from 'axios';
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
+import Genresapi from '../APIs/Genresapi'
+import MovieGenres from './MovieGenres';
 
 
-const Movierow = (topic) => {
+const Movierow = () => {
     let Navigate = useNavigate();
     const [tranding, settranding] = useState([]);
     const [movieinfo, setmovieinfo] = useState([]);
@@ -20,6 +22,10 @@ const Movierow = (topic) => {
     const elementref3 = useRef();
     const elementref4 = useRef();
     const elementref5 = useRef();
+
+
+
+
 
     const gettranding = async () => {
 
@@ -116,195 +122,203 @@ const Movierow = (topic) => {
     }, [])
 
     return (
-
-        <section className=' container-fluid'>
-            <div className=" mt-5  bg-black ">
+        <>{tranding && tvtoprated !== null ? (
 
 
-                <Carousel className='Carouselp'>
-                    {tranding.map((value, index) => {
 
-                        return (
 
-                            <Carousel.Item onClick={() => { Navigate(`/deatils/${value.id}`) }} >
 
-                                <img className='btn ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
-                                <Carousel.Caption>
 
+
+            <section className=' container-fluid'>
+                <div className=" mt-5  bg-black ">
+
+
+                    <Carousel className='Carouselp'>
+                        {tranding.map((value, index) => {
+
+                            return (
+
+                                <Carousel.Item onClick={() => { Navigate(`/deatils/${value.id}`) }} >
+
+                                    <img className='btn ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                    <Carousel.Caption>
+
+                                        <p>{value.name}</p>
+
+                                        <p className='h6'>{value.title}</p>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                            )
+                        })}
+
+                    </Carousel>
+
+                </div>
+
+                <div className=' position-relative '>
+                    <div className='text-white text-start'>
+                        <h3> Movies now playing</h3>
+                    </div>
+                    <div className='arrowl position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
+                        <p className=' btn h-100 d-flex  align-items-center  justify-content-between  '
+                            onClick={() => leftslide(elementref.current)}
+                        ><i class="fa-solid fa-chevron-left fa-2xl left  " style={{ color: '#c7cdd6', }} ></i></p>
+                    </div>
+                    <div className="scrolling-wrapper overflow-x-scroll    m-auto   d-flex  " ref={elementref}>
+
+                        {movieinfo.map((value, index) => {
+
+                            return (
+
+                                <div className='card w-25 bg-transparent  text-white text-start' key={value.id}
+                                    onClick={() => { Navigate(`/deatils/${value.id}`) }} >
+                                    <img className=' ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                    <p>{value.name}</p>
+                                </div>
+
+                            )
+                        })}
+                    </div>
+                    <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between    z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                            onClick={() => rightslide(elementref.current)}><i class="fa-solid fa-chevron-right fa-2xl " style={{ color: '#c7cdd6', }}></i></p>
+                    </div>
+                </div>
+                <div className=" bg-black mt-4 position-relative ">
+                    <div className='text-white text-start'>
+                        <h3>Most Top Rated Movies</h3>
+                    </div>
+                    <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between  ' onClick={() => leftslide(elementref2.current)}
+                        ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                    </div>
+
+                    <div className="scrolling-wrapper overflow-x-scroll  position-relative d-flex gap-2  " ref={elementref2}>
+                        {mtoprated.map((value, index) => {
+
+                            console.log(value.id)
+
+                            return (
+
+
+                                <div className='card w-25 bg-transparent text-white text-start ' key={value.id}
+                                    onClick={() => { Navigate(`/deatils/${value.id}`) }}>
+                                    {/* <p className='h6 text-white'>{value.title}</p> */}
+                                    <img className=' ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
                                     <p>{value.name}</p>
 
-                                    <p className='h6'>{value.title}</p>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                        )
-                    })}
+                                </div>
 
-                </Carousel>
-
-            </div>
-
-            <div className=' position-relative '>
-                <div className='text-white text-start'>
-                    <h3> Movies now playing</h3>
+                            )
+                        })}
+                    </div>
+                    <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                            onClick={() => rightslide(elementref2.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
+                    </div>
                 </div>
-                <div className='arrowl position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
-                    <p className=' btn h-100 d-flex  align-items-center  justify-content-between  '
-                        onClick={() => leftslide(elementref.current)}
-                    ><i class="fa-solid fa-chevron-left fa-2xl left  " style={{ color: '#c7cdd6', }} ></i></p>
-                </div>
-                <div className="scrolling-wrapper overflow-x-scroll    m-auto   d-flex  " ref={elementref}>
+                <div className=" mt-4 position-relative ">
+                    <div className='text-white text-start'>
+                        <h3>Most popular  Movies</h3>
+                    </div>
+                    <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref3.current)}
+                        ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                    </div>
 
-                    {movieinfo.map((value, index) => {
-                        // console.log(movieinfo.length)
-                        // console.log(value)
-                        // console.log(typeof (movieinfo))
-                        // console.log((index))
-                        // let mimg = value[index].known_for[index].poster_path;
-                        return (
+                    <div className="scrolling-wrapper overflow-x-scroll  d-flex " ref={elementref3} >
 
-                            <div className='card w-25 bg-transparent  text-white text-start' key={value.id}
-                                onClick={() => { Navigate(`/deatils/${value.id}`) }}
-                            >
-                                {/* <p className='h6 flex-wrap'>{value.title}</p> */}
-                                <img className=' ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
-                                <p>{value.name}</p>
+                        {moviepopular.map((value, index) => {
 
-                            </div>
-
-                        )
-                    })}
-                </div>
-                <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between    z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
-                        onClick={() => rightslide(elementref.current)}><i class="fa-solid fa-chevron-right fa-2xl " style={{ color: '#c7cdd6', }}></i></p>
-                </div>
-            </div>
-            <div className=" bg-black mt-4 position-relative ">
-                <div className='text-white text-start'>
-                    <h3>Most Top Rated Movies</h3>
-                </div>
-                <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between  ' onClick={() => leftslide(elementref2.current)}
-                    ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                            return (
+                                <div className='card w-25 bg-transparent text-white text-start ' key={value.id}
+                                    onClick={() => { Navigate(`/deatils/${value.id}`) }}>
+                                    <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className='arrowr position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                            onClick={() => rightslide(elementref3.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
+                    </div>
                 </div>
 
-                <div className="scrolling-wrapper overflow-x-scroll  position-relative d-flex gap-2  " ref={elementref2}>
-                    {mtoprated.map((value, index) => {
-                        // console.log(movieinfo.length)
-                        // console.log(value)
-                        // console.log(typeof (movieinfo))
-                        // console.log((index))
-                        console.log(value.id)
+                {/*                                   tv                          */}
+                <div className=" mt-4 position-relative">
+                    <div className='text-white text-start'>
+                        <h3>Most Popular TV Shows</h3>
+                    </div>
+                    <div className='arrowl position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref4.current)}
+                        ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                    </div>
 
-                        // let mimg = value[index].known_for[index].poster_path;
-                        return (
+                    <div className="scrolling-wrapper overflow-x-scroll position-relative d-flex  " ref={elementref4}>
 
+                        {tvpopular.map((value, index) => {
 
-                            <div className='card w-25 bg-transparent text-white text-start ' key={value.id}
-                                onClick={() => { Navigate(`/deatils/${value.id}`) }}>
-                                {/* <p className='h6 text-white'>{value.title}</p> */}
-                                <img className=' ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
-                                <p>{value.name}</p>
-
-                            </div>
-
-                        )
-                    })}
+                            return (
+                                <div className='card w-25 bg-transparent text-white text-start  '
+                                    onClick={() => { Navigate(`/tvdetails/${value.id}`) }} key={value.id}>
+                                    <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                            onClick={() => rightslide(elementref4.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
+                    </div>
                 </div>
-                <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
-                        onClick={() => rightslide(elementref2.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
-                </div>
-            </div>
-            <div className=" mt-4 position-relative ">
-                <div className='text-white text-start'>
-                    <h3>Most popular  Movies</h3>
-                </div>
-                <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref3.current)}
-                    ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
-                </div>
+                <div className=" mt-4 position-relative  ">
+                    <div className='text-white text-start'>
+                        <h3>Most Top Rated TV Shows</h3>
+                    </div>
+                    <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref5.current)}
+                        ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                    </div>
 
-                <div className="scrolling-wrapper overflow-x-scroll  d-flex " ref={elementref3} >
+                    <div className="scrolling-wrapper overflow-x-scroll position-relative d-flex  " ref={elementref5}>
 
-                    {moviepopular.map((value, index) => {
+                        {tvtoprated.map((value, index) => {
 
-                        return (
-                            <div className='card w-25 bg-transparent text-white text-start ' key={value.id}
-                                onClick={() => { Navigate(`/deatils/${value.id}`) }}>
-                                <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className='arrowr position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
-                        onClick={() => rightslide(elementref3.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
-                </div>
-            </div>
+                            return (
+                                <div className='card w-25 bg-transparent text-white text-start  ' key={value.id}
+                                    onClick={() => { Navigate(`/tvdetails/${value.id}`) }}>
+                                    <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className='arrowr position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
+                        <p className='btn h-100 d-flex  align-items-center  justify-content-between '
+                            onClick={() => rightslide(elementref5.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
+                    </div>
 
-            {/*                                   tv                          */}
-            <div className=" mt-4 position-relative">
-                <div className='text-white text-start'>
-                    <h3>Most Popular TV Shows</h3>
-                </div>
-                <div className='arrowl position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref4.current)}
-                    ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
                 </div>
 
-                <div className="scrolling-wrapper overflow-x-scroll position-relative d-flex  " ref={elementref4}>
 
-                    {tvpopular.map((value, index) => {
-
-                        return (
-                            <div className='card w-25 bg-transparent text-white text-start  '
-                                onClick={() => { Navigate(`/tvdetails/${value.id}`) }} key={value.id}>
-                                <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className='arrowr position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
-                        onClick={() => rightslide(elementref4.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
-                </div>
-            </div>
-            <div className=" mt-4 position-relative  ">
-                <div className='text-white text-start'>
-                    <h3>Most Top Rated TV Shows</h3>
-                </div>
-                <div className='arrowl position-absolute  d-flex  align-items-center  justify-content-between   z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between ' onClick={() => leftslide(elementref5.current)}
-                    ><i class="fa-solid fa-chevron-left fa-2xl left " style={{ color: '#c7cdd6', }} ></i></p>
+                <MovieGenres />
+                <div className='py-5 bg-transparent text-white'>
+                    <p className='mt-4'>NetFlix Clone</p>
+                    <p>@ Sumit</p>
                 </div>
 
-                <div className="scrolling-wrapper overflow-x-scroll position-relative d-flex  " ref={elementref5}>
 
-                    {tvtoprated.map((value, index) => {
 
-                        return (
-                            <div className='card w-25 bg-transparent text-white text-start  ' key={value.id}
-                                onClick={() => { Navigate(`/tvdetails/${value.id}`) }}>
-                                <img className='h-100 ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className='arrowr position-absolute d-flex  align-items-center  justify-content-between    z-3 '>
-                    <p className='btn h-100 d-flex  align-items-center  justify-content-between '
-                        onClick={() => rightslide(elementref5.current)}><i class="fa-solid fa-chevron-right fa-2xl left" style={{ color: '#c7cdd6', }}></i></p>
-                </div>
-
-            </div>
-            <div className='py-5 bg-transparent text-white'>
-                <p className='mt-4'>NetFlix Clone</p>
-                <p>@ Sumit</p>
-            </div>
+            </section >
 
 
 
-        </section>
+
+
+        ) : null}
+        </>
+
+
     )
 }
 

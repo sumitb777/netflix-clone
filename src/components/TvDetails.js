@@ -53,7 +53,7 @@ const TvDetails = () => {
                         <p></p>
 
                     </div>
-                    <div className=' d-none  d-md-block col-md-7 mb-4' >
+                    <div className=' d-none  d-md-block col-md-10 mb-4' >
                         <p className='text-start h6  '>Plot </p>
                         <p className='text-start mb-4 text-plot'> {info.overview}</p>
                     </div>

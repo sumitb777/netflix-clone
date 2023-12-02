@@ -61,7 +61,7 @@ const Details = () => {
                         <p></p>
 
                     </div>
-                    <div className=' d-none  d-md-block  mb-4' >
+                    <div className=' d-none  d-md-block  mb-4 col-10' >
 
                         <p className='text-start mb-4 text-plot'>{info.overview}</p>
                     </div>

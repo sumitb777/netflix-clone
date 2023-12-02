@@ -125,6 +125,7 @@ hr {
     white-space: nowrap;
     max-height: 40vh;
     scroll-behavior: smooth;
+    overflow-y: hidden;
 
 }
 
@@ -141,7 +142,13 @@ hr {
 .img-l,
 .card:hover {
     cursor: pointer;
+    transform: scale(1.2, 1.2);
+    /* transform: scaleY(1.1); */
+    transition-timing-function: ease-in;
+    transition-timing-function: scale 1s ease-in-out;
 }
+
+@keyframes transform {}
 
 .moviedeailsimg {
     max-height: 90vh !important;
@@ -205,6 +212,35 @@ hr {
     transform: scale(1, 1);
 }
 
+.arrowlm {
+    height: 108%;
+
+}
+
+.arrowrm {
+    /* right: 0px; */
+    right: 0;
+    /* top: 1%; */
+    bottom: 0;
+    height: 108%;
+
+}
+
+.arrowlm:hover {
+    cursor: pointer;
+    background-color: #0a0a0ab7;
+
+}
+
+.arrowrm:hover {
+    cursor: pointer;
+    background-color: #0a0a0abd;
+
+}
+
+
+
+
 .imgdetails {
     top: 0;
 
@@ -212,7 +248,7 @@ hr {
     padding-top: 12%;
     padding-left: 4%;
     /* background-color: #0a0a0aad; */
-    background-image: linear-gradient(to right, #0a0a0afb, #0a0a0acb, #0a0a0ab2, #0a0a0ab2, #27262604);
+    background-image: linear-gradient(to right, #0a0a0afb, #0a0a0acb, #0a0a0ab2, #0a0a0ab2, #0a0a0a7a, #27262600);
 
 }
 
