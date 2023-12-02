@@ -13,10 +13,7 @@ const movieg = [
         "id": 12,
         "name": "Adventure"
     },
-    {
-        "id": 16,
-        "name": "Animation"
-    },
+
     {
         "id": 35,
         "name": "Comedy"
@@ -58,6 +55,10 @@ const movieg = [
         "id": 10749,
         "name": "Romance"
     },
+    {
+        "id": 16,
+        "name": "Animation"
+    }
 
 
 
