@@ -141,7 +141,7 @@ const Movierow = () => {
 
                                 <Carousel.Item onClick={() => { Navigate(`/deatils/${value.id}`) }} >
 
-                                    <img className='btn ' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
+                                    <img className='btn img-fluid' src={`https://image.tmdb.org/t/p/w500/${value.poster_path}`} alt='' />
                                     <Carousel.Caption>
 
                                         <p>{value.name}</p>
