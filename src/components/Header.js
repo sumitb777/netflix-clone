@@ -28,7 +28,7 @@ const Header = () => {
     return (
 
         <section class=" col-lg-11 col-12  m-auto pt-3  mb-4 headerh
-          d-flex justify-content-lg-between justify-content-between align-content-center "
+          d-flex justify-content-lg-between justify-content-between align-content-center " onClick={removeserch}
         >
 
             <img class="img-l col-2 col-md-1  p-0 img-fluid  " onClick={() => { navigate('/') }} src="/images/logo.png" alt="" />

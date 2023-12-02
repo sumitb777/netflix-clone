@@ -41,7 +41,7 @@ const Details = () => {
 
                 <div className='col-12 mt-4 text-white moviedeails '>
                     <img className=' moviedeailsimg '
-                        src={`https://image.tmdb.org/t/p/w1280/${info.backdrop_path}`} alt='' />
+                        src={`https://image.tmdb.org/t/p/w1280/${info.backdrop_path}`} alt='no  img found' />
 
 
 
