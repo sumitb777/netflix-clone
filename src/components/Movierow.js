@@ -131,10 +131,10 @@ const Movierow = () => {
 
 
             <section className=' container-fluid'>
-                <div className=" mt-5  bg-black ">
+                <div className=" mt-md-5  bg-black ">
 
 
-                    <Carousel className='Carouselp'>
+                    <Carousel className='Carouselp col-12'>
                         {tranding.map((value, index) => {
 
                             return (
