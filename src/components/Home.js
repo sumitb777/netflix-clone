@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 
@@ -255,7 +257,7 @@ const Home = () => {
                                 <button class="btn btn-secondary dropdown-toggle bg-transparent " type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <img class="img-l"
-                                        src="./images/language-svgrepo-com.png" alt="" /> English</button>
+                                        src="./images/language-svgrepo-com.png" style={{ height: '15px' }} alt="" /> English</button>
                                 <ul class="dropdown-menu ">
                                     <li class="dropdown-item ">Hindi</li>   </ul>
                             </div>
@@ -268,7 +270,6 @@ const Home = () => {
                             <a class=" text-light1 " href="#">Jobs</a>
                             <a class=" text-light1 " href="">Cookie Preferences</a>
                             <a class=" text-light1 " href="">Legal Notices</a>
-                            {/* <!--                       --> */}
                             <a class=" text-light1 d-md-none  d-block" href="">Media Centre</a>
                             <a class=" text-light1 d-md-none  d-block" href="">Terms of Use</a>
                             <a class=" text-light1 d-md-none  d-block" href="">Contact Us</a>
@@ -287,6 +288,7 @@ const Home = () => {
                             <a class=" text-light1 " href="">Terms of Use</a>
                             <a class=" text-light1 " href="">Contact Us</a>
                         </div>
+
 
 
 
