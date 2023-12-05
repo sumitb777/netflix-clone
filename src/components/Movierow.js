@@ -11,6 +11,8 @@ const Movierow = () => {
     let Navigate = useNavigate();
     const [tranding, settranding] = useState([]);
     const [movieinfo, setmovieinfo] = useState([]);
+    const [istrend, setistrend] = useState(false)
+    const [isinfo, setinfo] = useState(false)
     const [moviepopular, setmoviepopular] = useState([]);
     const [mtoprated, setmtoprated] = useState([]);
     const [tvtoprated, settvtoprated] = useState([]);
@@ -35,6 +37,7 @@ const Movierow = () => {
                 (res) => {
                     const result = res.data.results
                     settranding(result)
+                    setistrend(true)
 
                 })
     }
@@ -47,6 +50,7 @@ const Movierow = () => {
                 (res) => {
                     const result = res.data.results
                     setmovieinfo(result)
+                    setinfo(true)
 
                 })
     }
@@ -122,7 +126,7 @@ const Movierow = () => {
     }, [])
 
     return (
-        <>{tranding && tvtoprated && moviepopular && movieinfo && tvpopular !== null ? (
+        <>{istrend && isinfo ? (
 
 
 
@@ -315,7 +319,13 @@ const Movierow = () => {
 
 
 
-        ) : null}
+        ) : <div className='bg-black d-flex  justify-content-center  align-items-center ' style={{ height: '120vh' }}>
+            <div class="spinner-border  text-white" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        }
         </>
 
 
