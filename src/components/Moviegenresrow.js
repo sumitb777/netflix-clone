@@ -54,11 +54,7 @@ const Moviegenresrow = ({ id, index_ }) => {
                     <div className="scrolling-wrapper   d-flex      " ref={elementref}>
 
                         {movieList.map((value, index) => {
-                            // console.log(movieinfo.length)
-                            // console.log(value)
-                            // console.log(typeof (movieinfo))
-                            // console.log((index))
-                            // let mimg = value[index].known_for[index].poster_path;
+
                             return (
 
 

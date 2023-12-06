@@ -6,20 +6,20 @@ import { useNavigate } from 'react-router-dom'
 const Header = () => {
     const navigate = useNavigate();
     const [searchinfo, setSearchinfo] = useState([]);
-    const [id, setid] = useState('')
+    const [name, setname] = useState('')
 
     const moviedeails = async () => {
 
-        let { data } = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c0d670d047a1f673651ed4c9bd561204&query=${id}`)
-        let result = await data.results.slice(0, 4);
+        let { data } = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c0d670d047a1f673651ed4c9bd561204&query=${name}`)
+        let result = await data.results.slice(0, 8);
         setSearchinfo([...result])
         console.log(data)
     }
 
 
     const getname = (e) => {
-        setid(e.target.value)
-        console.log(id)
+        setname(e.target.value)
+        console.log(name)
 
     }
     const removeserch = () => {
@@ -35,7 +35,7 @@ const Header = () => {
 
             <div class="d-flex position-relative col-8 col-md-5 gap-1  " role="search">
                 <input class="  form-control  header-input  text-light    "
-                    type="search" placeholder="Search Movies" aria-label="Search" value={id}
+                    type="search" placeholder="Search Movies" aria-label="Search" value={name}
                     onChange={getname}
                 />
                 <button class="btn btn-dark   text-white px-2" type="submit" onClick={moviedeails}>Search</button>
@@ -44,7 +44,8 @@ const Header = () => {
 
                         return (
                             <li className=' list-group-item btn text-decoration-none h4 '
-                                onClick={() => navigate(`/deatils/${value.id}`)} valu={value.name} key={value.id}>{value.original_title}  </li>
+                                onClick={() => navigate(`/deatils/${value.id}`)} valu={value.name}
+                                key={value.id}>{value.original_title} {value.release_date} </li>
                         )
 
                     })}
